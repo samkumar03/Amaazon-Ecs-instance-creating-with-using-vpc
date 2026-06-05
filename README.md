@@ -110,3 +110,11 @@ resource "aws_instance" "example" {
     cpu_credits = "unlimited"
   }
 }
+
+# A host resource group is a collection of Dedicated Hosts that you can manage as a single entity. As you launch instances, License Manager allocates the hosts and launches instances on them based on the settings that you configured. You can add existing Dedicated Hosts to a host resource group and take advantage of automated host management through License Manager.
+resource "aws_instance" "this" {
+  ami                     = "ami-0dcc1e21636832c5d"
+  instance_type           = "m5.large"
+  host_resource_group_arn = "arn:aws:resource-groups:us-west-2:123456789012:group/win-testhost"
+  tenancy                 = "host"
+}
