@@ -118,3 +118,12 @@ resource "aws_instance" "this" {
   host_resource_group_arn = "arn:aws:resource-groups:us-west-2:123456789012:group/win-testhost"
   tenancy                 = "host"
 }
+resource "aws_instance" "example" {
+ami  = "ami=-0053e54dee72cc1d00" # us-west-2
+instance_type= "t3.micro" 
+
+primary_networl_inteface {
+network_interface _id = aws_network_interface.exaple.id
+}
+credit_specification {
+cpu_credits = "unlimited"
